@@ -1,11 +1,15 @@
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React, { createRef, useRef } from "react";
 
 import Donut, {
   BACKGROUND_COLOR,
   BACKGROUND_STROKE_COLOR,
   IDonut,
-} from "./Donut";
+} from "./src/Components/Donut";
+import { Ellipse, Line, Path, Polygon, Rect, Svg } from "react-native-svg";
+import ExitButton from "./src/Components/ExitButton";
+import MaskedViewComponent from "./src/Components/MaskedViewComponent";
+import MaskedView from "@react-native-masked-view/masked-view";
 
 const App = () => {
   const refDonut = createRef<IDonut>();
@@ -14,15 +18,28 @@ const App = () => {
     const donutProgress = refDonut.current.getProgress();
     console.log(donutProgress);
 
-    refDonut.current.run(!!donutProgress ? 0 : 90);
+    refDonut.current.run(!!donutProgress ? 0 : 75);
   };
   return (
-    <View style={styles.container}>
-      <Donut ref={refDonut} />
-      <TouchableOpacity style={styles.startBtn} onPress={onPressDonut}>
-        <Text style={styles.startBtnTitle}>Start</Text>
-      </TouchableOpacity>
-    </View>
+    <MaskedViewComponent />
+    // <View style={styles.container}>
+    //   {/* <Donut ref={refDonut} />
+    //   <TouchableOpacity style={styles.startBtn} onPress={onPressDonut}>
+    //     <Text style={styles.startBtnTitle}>Start</Text>
+    //   </TouchableOpacity>
+    //   <ExitButton /> */}
+    //   {/* <Svg width={200} height={200} viewBox={`0 0 200 200`}> */}
+    //   {/* <Rect width={"100%"} height={"100%"} stroke={"#fff"} />
+    //     <Ellipse
+    //       cx="50%"
+    //       cy="50%"
+    //       rx="50%"
+    //       ry="50%"
+    //       stroke="#fff"
+    //       fill="none"
+    //     /> */}
+    //   {/* </Svg> */}
+    // </View>
   );
 };
 
@@ -31,7 +48,7 @@ export default App;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: BACKGROUND_COLOR,
+    // backgroundColor: BACKGROUND_COLOR,
     alignItems: "center",
     justifyContent: "center",
   },
