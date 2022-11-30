@@ -21,7 +21,7 @@ export interface IDonut {
   getProgress: () => number;
 }
 
-const Donut = forwardRef((props, ref: Ref<IDonut>) => {
+const Donut = forwardRef((_, ref: Ref<IDonut>) => {
   const progress = useSharedValue<number>(0);
 
   const circleAnimatedProps = useAnimatedProps(() => ({
